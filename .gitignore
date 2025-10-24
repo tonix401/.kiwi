@@ -1,6 +1,6 @@
 /*
 
-// only track these directories and files
+# only track these directories and files
 !/waybar/
 !/walker/
 !/uwsm/
