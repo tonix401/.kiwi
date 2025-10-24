@@ -1,5 +1,11 @@
-*
-!waybar/*
-!hypr/*
-!.gitignore
+/*
 
+// only track these directories and files
+!/waybar/
+!/walker/
+!/uwsm/
+!/hypr/
+!/btop/
+!/aether/
+!/alacritty/
+!.gitignore
