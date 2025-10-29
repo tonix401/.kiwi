@@ -9,3 +9,6 @@
 !/aether/
 !/alacritty/
 !.gitignore
+
+*.save
+*.bak

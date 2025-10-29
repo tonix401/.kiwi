@@ -3,7 +3,6 @@
 * {
   background-color: @background;
   color: @foreground;
-
   border: none;
   border-radius: 0;
   min-height: 0;
@@ -26,8 +25,14 @@
   min-width: 9px;
 }
 
-#workspaces button.empty {
+#workspaces button.empty label {
   opacity: 0.5;
+}
+
+#workspaces button.active label {
+  color: cyan;
+  font-weight: bold;
+  opacity: 1;
 }
 
 #cpu,
@@ -57,7 +62,9 @@
 }
 
 tooltip {
-  padding: 2px;
+  padding: 8px;
+  border-radius: 2px;
+  border: @foreground solid 1px;
 }
 
 #custom-update {
@@ -80,4 +87,15 @@ tooltip {
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
+}
+#window {
+  padding-left: 4px;
+}
+
+#window image {
+  opacity: 0.8;
+}
+
+#window label {
+  opacity: 0.5;
 }
