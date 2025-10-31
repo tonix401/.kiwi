@@ -4,7 +4,7 @@
   "position": "top",
   "spacing": 0,
   "height": 26,
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
     "tray",
@@ -18,7 +18,7 @@
     "on-click": "activate",
     "format": "{name}:{icon}",
     "format-icons": {
-      "default": "",
+      "default": "",
       "1": " ",
       "2": " ",
       "3": " ",
@@ -44,15 +44,29 @@
     "on-click": "$TERMINAL -e btop"
   },
   "clock": {
-    "format": "{:L%A %H:%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false,
-    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+    "format": "{:%Z: %a, %d %b, %H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "timezones": ["Europe/Berlin", "Asia/Singapore"],
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 4,
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'>{}</span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff3333'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click": "tz_up",
+      "on-click-right": "mode"
+    }
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
-    "format-wifi": "{icon} {essid}",
+    "format-wifi": "{icon} {bandwidthDownBytes}",
     "format-ethernet": "󰀂 ethernet",
     "format-disconnected": "󰤮 disconnected",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -84,8 +98,8 @@
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂲",
-    "format-connected": " {num_connections}",
-    "tooltip-format": "Devices connected: {num_connections}",
+    "format-connected": "",
+    "tooltip-format": "{num_connections} connected devices",
     "on-click": "blueberry"
   },
   "pulseaudio": {
@@ -103,17 +117,6 @@
     "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
     "signal": 8,
     "return-type": "json"
-  },
-  "hyprland/window": {
-    "format": "{title}",
-    "separate-outputs": true,
-    "icon": true,
-    "icon-size": 14,
-    "max-length": 40,
-    "rewrite": {
-      "(.*) - Mozilla Firefox": "$1",
-      "(.*) - Visual Studio Code": "$1"
-    }
   },
   "tray": {
     "icon-size": 12,

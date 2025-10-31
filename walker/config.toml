@@ -50,6 +50,10 @@ prefix = ":"
 provider = "symbols"
 
 [[providers.prefixes]]
+prefix = "!"
+provider = "unicode"
+
+[[providers.prefixes]]
 prefix = "="
 provider = "calc"
 

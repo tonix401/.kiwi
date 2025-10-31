@@ -30,7 +30,7 @@
 }
 
 #workspaces button.active label {
-  color: cyan;
+  color: #8ECAD6;
   font-weight: bold;
   opacity: 1;
 }
@@ -87,15 +87,4 @@ tooltip {
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
-}
-#window {
-  padding-left: 4px;
-}
-
-#window image {
-  opacity: 0.8;
-}
-
-#window label {
-  opacity: 0.5;
 }
