@@ -49,7 +49,7 @@
     "timezones": ["Europe/Berlin", "Asia/Singapore"],
     "calendar": {
       "mode"          : "year",
-      "mode-mon-col"  : 4,
+      "mode-mon-col"  : 6,
       "format": {
         "months":     "<span color='#ffead3'><b>{}</b></span>",
         "days":       "<span color='#ecc6d9'>{}</span>",
