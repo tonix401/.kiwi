@@ -41,7 +41,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛 {load}%",
-    "on-click": "$TERMINAL -e btop"
+    "on-click": "xdg-terminal-exec btop"
   },
   "clock": {
     "format": "{:%Z: %a, %d %b, %H:%M}",
@@ -104,7 +104,7 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "on-click": "$TERMINAL --class=Wiremix -e wiremix",
+    "on-click": "xdg-terminal-exec --app-id=com.omarchy.Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "scroll-step": 5,
     "format-muted": " 0%",
@@ -115,6 +115,12 @@
   "custom/screenrecording-indicator": {
     "on-click": "omarchy-cmd-screenrecord",
     "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
+    "signal": 8,
+    "return-type": "json"
+  },
+  "custom/nightlight": {
+    "exec": "$HOME/.config/waybar/scripts/nightlight-indicator.sh",
+    "on-click": "omarchy-toggle-nightlight",
     "signal": 8,
     "return-type": "json"
   },
