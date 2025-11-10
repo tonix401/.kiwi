@@ -10,5 +10,11 @@
 !/alacritty/
 !.gitignore
 
+
+# ignore backup files
 *.save
+*.bak.*
 *.bak
+
+# ignore hyprland shaders
+/hypr/shaders/*
