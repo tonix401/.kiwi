@@ -1,21 +1,13 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Color palette based on my bg image
-#260004
-#441116
-#692B39
-#22859B
-#00427B
-#000B23
-
 format = """
-[](#260004)\
+[]($COLOR0)\
 $directory\
-[](fg:#260004 bg:#441116)\
+[](fg:$COLOR0 bg:$COLOR1)\
 $git_branch\
 $git_status\
-[](fg:#441116 bg:#692B39)\
+[](fg:$COLOR1 bg:$COLOR2)\
 $c\
 $cpp\
 $golang\
@@ -23,25 +15,14 @@ $gradle\
 $java\
 $nodejs\
 $python\
-[](fg:#692B39 bg:#22859B)\
+[](fg:$COLOR2 bg:$COLOR3)\
 $docker_context\
-[](fg:#22859B bg:#00427B)\
+[](fg:$COLOR3 bg:$COLOR4)\
 $time\
-[ ](fg:#00427B)
+[ ](fg:$COLOR4)
 """
 
 add_newline = true
-
-[username]
-show_always = true
-style_user = "bg:#f04d27"
-style_root = "bg:#f04d27"
-format = '[$user ]($style)'
-disabled = false
-
-[os]
-style = "bg:#f04d27"
-disabled = false
 
 [os.symbols]
 Alpine = " "
@@ -61,7 +42,7 @@ Unknown = " "
 Windows = "󰍲 "
 
 [directory]
-style = "bg:#260004"
+style = "bg:$COLOR0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "/"
@@ -71,45 +52,45 @@ truncation_symbol = "/"
 
 [docker_context]
 symbol = " "
-style = "bg:#22859B"
+style = "bg:$COLOR3"
 format = '[ $symbol $context ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#441116"
+style = "bg:$COLOR1"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#441116"
+style = "bg:$COLOR1"
 format = '[$all_status$ahead_behind ]($style)'
 
 [c]
 symbol = ""
-style = "bg:#692B39"
+style = "bg:$COLOR2"
 format = '[ $symbol ($version) ]($style)'
 
 [cpp]
 symbol = ""
-style = "bg:#692B39"
+style = "bg:$COLOR2"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = ""
-style = "bg:#692B39"
+style = "bg:$COLOR2"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#692B39"
+style = "bg:$COLOR2"
 format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = ""
-style = "bg:#692B39"
+style = "bg:$COLOR2"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "bg:#00427B"
+style = "bg:$COLOR4"
 format = '[ $time ]($style)'

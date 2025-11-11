@@ -8,6 +8,7 @@
 !/btop/
 !/aether/
 !/alacritty/
+!/starship_scripts/
 !starship.toml
 !mimeapps.list
 !.gitignore
