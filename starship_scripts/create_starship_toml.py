@@ -2,8 +2,8 @@ from pathlib import Path
 from re import match
 
 STARSHIP_TOML_PATH = Path("../starship.toml")
-COLOR_PALETTE_FOLDER_PATH = Path("./color_palettes/")
-TEMPLATE_PATH = Path("./template.toml")
+COLOR_PALETTE_FOLDER = "color_palettes/"
+TEMPLATE_PATH = Path("template.toml")
 
 # Function to check the format of the colors is correct and there are enough colors
 def ensure_color_palette_format(colors: list[str]) -> bool:
@@ -21,7 +21,7 @@ def write_or_overwrite_starshiptoml_with_permission(template: str):
     response = not STARSHIP_TOML_PATH.exists() or input("starship.toml already exists. Overwrite? (Y/n):").lower().strip()
     if response in (True, "y", "yes", ""):
         STARSHIP_TOML_PATH.write_text(template)
-        print("Wrote starship.toml! Copy or move it to ~/.config/starship.toml")
+        print("Wrote starship.toml! 🚀")
         exit(0)
     elif response in ("n", "no"):
         print("Exiting...")
@@ -31,10 +31,10 @@ def write_or_overwrite_starshiptoml_with_permission(template: str):
         write_or_overwrite_starshiptoml_with_permission()
 
 # Get the color palette
-color_palette_path: str = str(COLOR_PALETTE_FOLDER_PATH) + "/" + input("Enter color palette filename (./color_palettes/___): ")
-
-while not color_palette_path.exists():
-    color_palette_path = str(COLOR_PALETTE_FOLDER_PATH) + "/" + input("File not found. Must be in './color_palettes': ")
+color_palette_path: str = COLOR_PALETTE_FOLDER + input("Enter color palette filename (./color_palettes/___): ")
+    
+while not Path(color_palette_path).exists():
+    color_palette_path = COLOR_PALETTE_FOLDER + input(f"'{color_palette_path}' not found. Enter a valid filename: ")
 color_palette: list[str] = Path(color_palette_path).read_text().splitlines()
 
 for i, color in enumerate(color_palette):

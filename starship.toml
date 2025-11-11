@@ -1,14 +1,6 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Color palette based on my bg image
-#260004
-#441116
-#692B39
-#22859B
-#00427B
-#000B23
-
 format = """
 [](#260004)\
 $directory\
@@ -31,17 +23,6 @@ $time\
 """
 
 add_newline = true
-
-[username]
-show_always = true
-style_user = "bg:#f04d27"
-style_root = "bg:#f04d27"
-format = '[$user ]($style)'
-disabled = false
-
-[os]
-style = "bg:#f04d27"
-disabled = false
 
 [os.symbols]
 Alpine = " "
