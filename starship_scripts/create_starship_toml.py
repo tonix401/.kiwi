@@ -4,13 +4,13 @@ from re import match
 # Function to check the format of the colors is correct and there are enough colors
 def ensure_color_palette_format(colors: list[str]) -> bool:
     if not len(colors) >= 5:
-        print("Color palette file does not have enough colors/lines, min 5. Exiting...")
-        exit(0)
+        print("Color palette file does not have enough colors/lines, the minimum is 5. Exiting...")
+        exit(1)
 
     for color in colors:
         if not match(r'^#(?:[0-9a-fA-F]{3}){1,2}$', color):
             print("The colors are not the correct format. Use '#xxxxxx' or '#xxx'")
-            exit(0)
+            exit(1)
     
 # Function to handle overwriting existing starship.toml
 def write_or_overwrite_starshiptoml_with_permission(template: str):
@@ -42,7 +42,7 @@ ensure_color_palette_format(color_palette)
 template_path = Path("template.toml")
 if not template_path.exists():
     print(f"Could not find '{template_path.name}'. Exiting...")
-    exit(0)
+    exit(1)
 template: str = template_path.read_text()
 
 # Replace color placeholders in the template
