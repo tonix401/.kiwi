@@ -1,6 +1,10 @@
 from pathlib import Path
 from re import match
 
+STARSHIP_TOML_PATH = Path("../starship.toml")
+COLOR_PALETTE_FOLDER_PATH = Path("./color_palettes/")
+TEMPLATE_PATH = Path("./template.toml")
+
 # Function to check the format of the colors is correct and there are enough colors
 def ensure_color_palette_format(colors: list[str]) -> bool:
     if not len(colors) >= 5:
@@ -14,9 +18,9 @@ def ensure_color_palette_format(colors: list[str]) -> bool:
     
 # Function to handle overwriting existing starship.toml
 def write_or_overwrite_starshiptoml_with_permission(template: str):
-    response = not Path("starship.toml").exists() or input("starship.toml already exists. Overwrite? (Y/n):").lower().strip()
+    response = not STARSHIP_TOML_PATH.exists() or input("starship.toml already exists. Overwrite? (Y/n):").lower().strip()
     if response in (True, "y", "yes", ""):
-        Path("starship.toml").write_text(template)
+        STARSHIP_TOML_PATH.write_text(template)
         print("Wrote starship.toml! Copy or move it to ~/.config/starship.toml")
         exit(0)
     elif response in ("n", "no"):
@@ -27,10 +31,10 @@ def write_or_overwrite_starshiptoml_with_permission(template: str):
         write_or_overwrite_starshiptoml_with_permission()
 
 # Get the color palette
-color_palette_path: str = "./color_palettes/" + input("Enter color palette filename (./color_palettes/___): ")
+color_palette_path: str = str(COLOR_PALETTE_FOLDER_PATH) + "/" + input("Enter color palette filename (./color_palettes/___): ")
 
-while not Path(color_palette_path).exists():
-    color_palette_path = "./color_palettes/" + input("File not found. Must be in './color_palettes': ")
+while not color_palette_path.exists():
+    color_palette_path = str(COLOR_PALETTE_FOLDER_PATH) + "/" + input("File not found. Must be in './color_palettes': ")
 color_palette: list[str] = Path(color_palette_path).read_text().splitlines()
 
 for i, color in enumerate(color_palette):
@@ -39,11 +43,10 @@ for i, color in enumerate(color_palette):
 ensure_color_palette_format(color_palette)
 
 # Get the template
-template_path = Path("template.toml")
-if not template_path.exists():
-    print(f"Could not find '{template_path.name}'. Exiting...")
+if not TEMPLATE_PATH.exists():
+    print(f"Could not find '{TEMPLATE_PATH.name}'. Exiting...")
     exit(1)
-template: str = template_path.read_text()
+template: str = TEMPLATE_PATH.read_text()
 
 # Replace color placeholders in the template
 for i, color in enumerate(color_palette):
