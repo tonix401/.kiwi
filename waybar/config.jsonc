@@ -74,7 +74,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "omarchy-launch-wifi"
+    "on-click": "xdg-terminal-exec --app-id=gazelle -e gazelle"
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -118,11 +118,12 @@
     "signal": 8,
     "return-type": "json"
   },
-  "custom/nightlight": {
-    "exec": "$HOME/.config/waybar/scripts/nightlight-indicator.sh",
-    "on-click": "omarchy-toggle-nightlight",
-    "signal": 8,
-    "return-type": "json"
+  "hyprland/window": {
+    "format": "{class}: {title}",
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 14,
+    "max-length": 40
   },
   "tray": {
     "icon-size": 12,

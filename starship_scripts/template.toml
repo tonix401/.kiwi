@@ -48,7 +48,6 @@ truncation_length = 3
 truncation_symbol = "/"
 
 [directory.substitutions]
-".config" = ". "
 
 [docker_context]
 symbol = " "
