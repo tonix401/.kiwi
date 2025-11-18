@@ -1,5 +1,5 @@
 {
-  "reload_style_on_change": true,
+  "reload_style_on_change": false,
   "layer": "top",
   "position": "top",
   "spacing": 0,
@@ -44,18 +44,18 @@
     "on-click": "xdg-terminal-exec btop"
   },
   "clock": {
-    "format": "{:%Z: %a, %d %b, %H:%M}",
+    "format": "{:%Z %H:%M}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "timezones": ["Europe/Berlin", "Asia/Singapore"],
     "calendar": {
-      "mode"          : "year",
+      "mode"          : "month",
       "mode-mon-col"  : 6,
       "format": {
         "months":     "<span color='#ffead3'><b>{}</b></span>",
         "days":       "<span color='#ecc6d9'>{}</span>",
         "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-        "today":      "<span color='#ff3333'><b>{}</b></span>"
+        "today":      "<span color='#ffead3' background='#ff3333'><b>{}</b></span>"
       }
     },
     "actions": {
